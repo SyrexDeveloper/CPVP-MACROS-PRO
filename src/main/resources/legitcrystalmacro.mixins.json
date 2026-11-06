@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "package": "dev.priyme.legitcrystalmacro.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "PlayerListEntryMixin",
+    "PlayerEntityMixin",
+    "HandledScreenAccessor",
+    "MinecraftClientAccessor",
+    "SafeAnchorInteractionMixin",
+    "NoInteractMixin",
+    "JumpResetDamageMixin",
+    "JumpResetInputMixin",
+    "TrajectoryFovAccessor",
+    "AttackResetMixin",
+    "ChatNameProtectMixin",
+    "NoSlowMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

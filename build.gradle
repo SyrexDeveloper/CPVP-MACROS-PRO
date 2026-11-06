@@ -1,0 +1,86 @@
+plugins {
+	id 'fabric-loom' version '1.19.3'
+}
+
+version = project.mod_version
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories {
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+	filesMatching("fabric.mod.json") { expand "version": project.version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+	it.options.encoding = "UTF-8"
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+
+// ---------------------------------------------------------------------------
+// PRO 3.6.2 - MIXIN FIX (neden gerekli?)
+//
+// Decompiler (Vineflower) tum ek aciklamalari dizi formunda yaziyor:
+//     @Redirect(method = {"m"}, at = {@At(value = "INVOKE", ...)})
+// javac bunu her zaman ARRAY olarak kodluyor. MixinExtras ise @Redirect icindeki
+// "at" degerini kosulsuz AnnotationNode'a cast ediyor:
+//     (AnnotationNode) Annotations.getValue(redirect, "at")
+// -> "java.util.ArrayList cannot be cast to AnnotationNode"
+// -> acilista "Mixin transformation of net.minecraft.class_746 failed" cokmesi.
+//
+// Cozum: orijinal 3.6 jar'indaki (dogru kodlanmis) mixin bytecode'lari
+// src/main/resources/mixin-original/ altinda saklanir ve paketleme sirasinda
+// derlenmis mixin siniflarinin yerine konur. Boylece cikti jar, 3.6'daki
+// mixin davranisiyla birebir ayni olur.
+// ---------------------------------------------------------------------------
+tasks.named('jar') {
+    doLast {
+        def jarFile = archiveFile.get().asFile
+        def tmpFile = new File(jarFile.parentFile, jarFile.name + '.tmp')
+        def originalPrefix = 'mixin-original/'
+        def mixinPrefix = 'dev/priyme/legitcrystalmacro/mixin/'
+
+        def zin = new java.util.zip.ZipFile(jarFile)
+        def zout = new java.util.zip.ZipOutputStream(new java.io.FileOutputStream(tmpFile))
+
+        def swapped = 0
+        zin.entries().each { e ->
+            boolean skip = e.name.startsWith(originalPrefix) || (e.name.startsWith(mixinPrefix) && e.name.endsWith('.class'))
+            if (skip) return
+            zout.putNextEntry(new java.util.zip.ZipEntry(e.name))
+            zout.write(zin.getInputStream(e).bytes)
+            zout.closeEntry()
+        }
+
+        zin.entries().findAll { it.name.startsWith(originalPrefix) && it.name.endsWith('.class') }.each { e ->
+            def target = e.name.substring(originalPrefix.length())
+            zout.putNextEntry(new java.util.zip.ZipEntry(target))
+            zout.write(zin.getInputStream(e).bytes)
+            zout.closeEntry()
+            swapped++
+        }
+
+        zout.close()
+        zin.close()
+        jarFile.delete()
+        if (!tmpFile.renameTo(jarFile)) {
+            java.nio.file.Files.move(tmpFile.toPath(), jarFile.toPath())
+        }
+        logger.lifecycle("PRO MIXIN FIX: {} orijinal mixin sinifi geri yerlestirildi.", swapped)
+    }
+}

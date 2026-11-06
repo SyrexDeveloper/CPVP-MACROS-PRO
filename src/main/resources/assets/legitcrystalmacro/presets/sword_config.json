@@ -1,0 +1,50 @@
+{
+  "triggerBotEnabled": true,
+  "triggerBotDelay": 105,
+  "triggerBotRandomDelay": 0,
+  "triggerBotCritOnly": false,
+  "triggerBotSwords": true,
+  "triggerBotAxes": true,
+  "triggerBotMinCps": 12,
+  "triggerBotMaxCps": 16,
+  "triggerBotCooldownThreshold": 0.95,
+  "triggerBotWeaponsOnly": true,
+  "triggerBotHitChance": 100,
+  "triggerBotReach": 3.0,
+  "triggerBotPlayersOnly": true,
+
+  "aimAssistEnabled": true,
+  "aimAssistTargetMode": 0,
+  "aimAssistRange": 3.9,
+  "aimAssistFov": 35.0,
+  "aimAssistSmoothingSpeed": 0.7,
+  "aimAssistTrackingScale": 1.5,
+  "aimAssistPitchWeight": 1.0,
+  "aimAssistDeadzone": 0.0,
+  "aimAssistMicroAdjustment": 0.26,
+  "aimAssistOnlyWhileMoving": false,
+  "aimAssistBoneMode": 0,
+  "aimAssistGcdSmoothing": true,
+
+  "movementAutoSprintEnabled": true,
+  "fastXpEnabled": true,
+  "fastXpDelay": 1,
+  "fastXpSwitchDelay": 55,
+  "jumpResetEnabled": true,
+  "jumpResetChance": 88,
+  "jumpResetMode": 0,
+
+  "autoMaceEnabled": false,
+  "spearReachEnabled": false,
+  "spearLungeEnabled": false,
+  "shieldBreakerEnabled": false,
+  "crystalEnabled": false,
+  "anchorEnabled": false,
+  "plateWebEnabled": false,
+  "cobwebPlaceEnabled": false,
+
+  "moduleKeybinds": {
+    "TriggerBot": 2,
+    "Aim Assist": 3
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "legitcrystalmacro",
+  "version": "${version}",
+  "name": "CPVP Macros Pro",
+  "description": "CPVP Macros Pro 3.6.2 - crystal/anchor/mace PvP macro paketi (decompiled & gelistirilmis surum).",
+  "authors": [
+    "priyme (orijinal)",
+    "Raufix (Pro surumu)"
+  ],
+  "license": "All Rights Reserved",
+  "icon": "assets/legitcrystalmacro/textures/gui/logo.png",
+  "environment": "client",
+  "mixins": [
+    "legitcrystalmacro.mixins.json"
+  ],
+  "entrypoints": {
+    "client": [
+      "dev.priyme.legitcrystalmacro.LegitCrystalMacroClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "fabric-api": "*",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  },
+  "suggests": {
+    "modmenu": ">=17.0.0-beta.2"
+  }
+}

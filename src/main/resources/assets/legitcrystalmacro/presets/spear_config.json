@@ -1,0 +1,41 @@
+{
+  "triggerBotEnabled": false,
+  "aimAssistEnabled": false,
+
+  "autoMaceEnabled": true,
+  "autoMaceReach": 6.0,
+  "autoMaceFov": 200.0,
+  "autoMaceMinFallDistance": 3.0,
+  "autoMaceSwitchDelay": 30,
+  "autoMaceSwitchBack": true,
+
+  "spearReachEnabled": true,
+  "spearReachDistance": 3.45,
+  "spearReachDistanceMode": 2,
+  "spearReachDelay": 0,
+  "spearReachSwitchBack": true,
+
+  "spearLungeEnabled": true,
+  "spearLungeKey": 4,
+  "spearLungePower": 1.5,
+  "spearLungeCooldown": 1000,
+  "spearLungeMinHunger": 6.0,
+  "spearLungeUpwardPower": 0.25,
+
+  "shieldBreakerEnabled": true,
+
+  "movementAutoSprintEnabled": true,
+  "perfectWindChargeEnabled": true,
+  "perfectWindChargeTriggerRange": 1.15,
+  "fastXpEnabled": true,
+  "fastXpDelay": 1,
+  "fastXpSwitchDelay": 55,
+
+  "jumpResetEnabled": false,
+  "crystalEnabled": false,
+  "anchorEnabled": false,
+  "plateWebEnabled": false,
+  "cobwebPlaceEnabled": false,
+
+  "moduleKeybinds": {}
+}

@@ -1,0 +1,60 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/sword.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE001"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/shield.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE002"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/mace.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE003"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/movement.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE004"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/user.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE005"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/gear.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE006"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/folder.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE007"]
+    },
+    {
+      "type": "bitmap",
+      "file": "legitcrystalmacro:icons/search.png",
+      "ascent": 7,
+      "height": 9,
+      "chars": ["\uE008"]
+    }
+  ]
+}
